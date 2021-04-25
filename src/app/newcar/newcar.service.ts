@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -9,10 +10,13 @@ export class NewcarService {
   constructor(private http: HttpClient) {}
 
   UploadService(formData: FormData): Observable<any> {
-    return this.http.post('https://localhost:5001/api/Car/upload', formData, {
+    return this.http.post(environment.apiUrl + 'Car/upload', formData, {
       reportProgress: true,
       observe: 'events',
     });
-    
+  }
+
+  newCar(carObject: any): Observable<any> {
+    return this.http.post(environment.apiUrl + 'Car/carinfo', carObject);
   }
 }

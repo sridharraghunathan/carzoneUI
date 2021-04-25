@@ -10,6 +10,7 @@ import {
   FormArray,
 } from '@angular/forms';
 import { Editor, Toolbar } from 'ngx-editor';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-newcar',
@@ -94,7 +95,11 @@ export class NewcarComponent implements OnInit, OnDestroy {
     },
   ];
 
-  constructor(private newcarService: NewcarService, private fb: FormBuilder) {}
+  constructor(
+    private newcarService: NewcarService,
+    private fb: FormBuilder,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.editor = new Editor();
@@ -163,60 +168,102 @@ export class NewcarComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     const carObject: any = {
       carName: '',
-      price: '',
+      price: null,
       location: '',
       saleType: '',
-      featured: '',
+      featured: false,
       fuelType: '',
       miles: '',
       transmission: '',
       bodyStyle: '',
       color: '',
-      yearMake: '',
+      yearMake: null,
       model: '',
       condition: '',
       engine: '',
       interiorColor: '',
-      doors: '',
-      passengers: '',
+      doors: null,
+      passengers: null,
       vinNo: '',
       mileage: '',
-      carDescription: '',
-      features: [],
+      carDescription: 'Empty',
+      carFeature: [],
       carPhotos: [],
     };
 
     carObject.carName = this.newCarForm.get('carName')?.value;
-    carObject.price = this.newCarForm.get('price')?.value;
+    carObject.price = +this.newCarForm.get('price')?.value;
     carObject.location = this.newCarForm.get('location')?.value;
-    carObject.saleType = this.newCarForm.get('saleType')?.value;
-    carObject.featured = this.newCarForm.get('featured')?.value;
-    carObject.fuelType = this.newCarForm.get('fuelType')?.value;
+    carObject.saleType = this.newCarForm
+      .get('saleType')
+      ?.value.split(':')[1]
+      .trim();
+    carObject.featured =
+      this.newCarForm.get('featured')?.value !== '' ? true : false;
+    carObject.fuelType = this.newCarForm
+      .get('fuelType')
+      ?.value.split(':')[1]
+      .trim();
     carObject.miles = this.newCarForm.get('miles')?.value;
-    carObject.transmission = this.newCarForm.get('transmission')?.value;
+    carObject.transmission = this.newCarForm
+      .get('transmission')
+      ?.value.split(':')[1]
+      .trim();
     carObject.bodyStyle = this.newCarForm.get('bodyStyle')?.value;
     carObject.color = this.newCarForm.get('color')?.value;
-    carObject.yearMake = this.newCarForm.get('yearMake')?.value;
+    carObject.yearMake = +this.newCarForm.get('yearMake')?.value;
     carObject.model = this.newCarForm.get('model')?.value;
-    carObject.condition = this.newCarForm.get('condition')?.value;
+    carObject.condition = this.newCarForm
+      .get('condition')
+      ?.value.split(':')[1]
+      .trim();
     carObject.engine = this.newCarForm.get('engine')?.value;
     carObject.interiorColor = this.newCarForm.get('interiorColor')?.value;
-    carObject.doors = this.newCarForm.get('doors')?.value;
-    carObject.passengers = this.newCarForm.get('passengers')?.value;
+    carObject.doors = +this.newCarForm.get('doors')?.value;
+    carObject.passengers = +this.newCarForm.get('passengers')?.value;
     carObject.vinNo = this.newCarForm.get('vinNo')?.value;
     carObject.mileage = this.newCarForm.get('mileage')?.value;
-    carObject.carDescription = this.newCarForm.get('carDescription')?.value;
+    carObject.carDescription = 'Empty';
     this.newCarForm
       .get('features')
       ?.value.map((arr: boolean, index: number) => {
         if (arr) {
-          carObject.features.push(this.items[index].value);
+          carObject.carFeature.push({
+            availableFeature: this.items[index].value,
+          });
         }
       });
 
-    carObject.carPhotos = [this.newCarForm.get('carPhoto')?.value, this.newCarForm.get('carPhoto1')?.value
-, this.newCarForm.get('carPhoto2')?.value, this.newCarForm.get('carPhoto3')?.value];
+    if (this.newCarForm.get('carPhoto')?.value) {
+      carObject.carPhotos.push({
+        pictureUrl: this.newCarForm.get('carPhoto')?.value,
+      });
+    }
+    if (this.newCarForm.get('carPhoto1')?.value) {
+      carObject.carPhotos.push({
+        pictureUrl: this.newCarForm.get('carPhoto1')?.value,
+      });
+    }
+
+    if (this.newCarForm.get('carPhoto2')?.value) {
+      carObject.carPhotos.push({
+        pictureUrl: this.newCarForm.get('carPhoto2')?.value,
+      });
+    }
+
+    if (this.newCarForm.get('carPhoto3')?.value) {
+      carObject.carPhotos.push({
+        pictureUrl: this.newCarForm.get('carPhoto3')?.value,
+      });
+    }
+
     console.log(carObject);
+
+    // tslint:disable-next-line: deprecation
+    this.newcarService.newCar(carObject).subscribe((data: any) => {
+      console.log(data);
+      this.toastr.success(Object.keys(data)[0]);
+    });
   }
 
   setControl(fileToUpload: string, id: string): void {
@@ -248,8 +295,8 @@ export class NewcarComponent implements OnInit, OnDestroy {
           this.message = 'upload success.';
         }
       });
-  }
-  
+  };
+
   ngOnDestroy(): void {
     this.editor.destroy();
   }
