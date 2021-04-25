@@ -1,0 +1,83 @@
+<div class="newcar__container">
+
+  <form   [formGroup]="newCarForm" (ngSubmit)="onSubmit()" >
+    <div class="newcar">
+
+
+    <app-text-input formControlName="carName" [label]="'Carname'"></app-text-input>
+    <app-text-input formControlName="price" [label]="'Price'"></app-text-input>
+    <app-text-input formControlName="location" [label]="'Location'"></app-text-input>
+    <select class="dropdown__car ml-1" [(ngModel)]="defaultValueObj.saleType" (change)="saleTypeEvent($event)" formControlName="saleType">
+      <option value="">Choose your sale</option>
+      <option *ngFor="let sale of saleType" [ngValue]="sale">{{sale}}</option>
+   </select>
+    <app-text-input formControlName="featured" [label]="'Featured'"></app-text-input>
+    <!-- <app-text-input formControlName="fuelType" [label]="'Fueltype'"></app-text-input> -->
+    <select class="dropdown__car ml-1" [(ngModel)]="defaultValueObj.fuelType" (change)="fuelTypeEvent($event)" formControlName="fuelType">
+      <option value="">Choose your Fuel</option>
+      <option *ngFor="let fuel of fuelType" [ngValue]="fuel">{{fuel}}</option>
+   </select>
+    <app-text-input formControlName="miles" [label]="'Miles'"></app-text-input>
+    <!-- <app-text-input formControlName="transmission" [label]="'Transmission'"></app-text-input> -->
+    <select class="dropdown__car ml-1" [(ngModel)]="defaultValueObj.transmission" (change)="transmissionEvent($event)" formControlName="transmission">
+      <option value="">Choose your transmission</option>
+      <option *ngFor="let trans of transmission" [ngValue]="trans">{{trans}}</option>
+   </select>
+    <app-text-input formControlName="bodyStyle" [label]="'Bodystyle'"></app-text-input>
+    <app-text-input formControlName="color" [label]="'Color'"></app-text-input>
+    <app-text-input formControlName="yearMake" [label]="'Yearmake'"></app-text-input>
+    <app-text-input formControlName="model" [label]="'Model'"></app-text-input>
+    <!-- <app-text-input formControlName="condition" [label]="'condition'"></app-text-input> -->
+    <select class="dropdown__car ml-1" [(ngModel)]="defaultValueObj.condition" (change)="conditionEvent($event)" formControlName="condition">
+      <option value="">Current Condition</option>
+      <option *ngFor="let cond of condition" [ngValue]="cond">{{cond}}</option>
+   </select>
+    <app-text-input formControlName="engine" [label]="'Engine'"></app-text-input>
+    <app-text-input formControlName="interiorColor" [label]="'interiorcolor'"></app-text-input>
+    <app-text-input formControlName="doors" [label]="'doors'"></app-text-input>
+    <app-text-input formControlName="passengers" [label]="'passengers'"></app-text-input>
+    <app-text-input formControlName="vinNo" [label]="'VinNo'"></app-text-input>
+    <app-text-input formControlName="mileage" [label]="'Mileage'"></app-text-input>
+    <div class="editor">
+      <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+      </ngx-editor-menu>
+      <ngx-editor [editor]="editor" formControlName="carDescription">
+      </ngx-editor>
+    </div>
+
+    <div class="upload">
+      <label class="upload__photolbl">Car Photo</label>
+      <input type="file" #file class="upload__file"  placeholder="choose file" (change)="uploadFile(file.files,'')">
+      <!-- <button type="button" class="upload__btn" (click)="file.click()">Upload File</button> -->
+    </div>
+
+    <div class="upload">
+      <label class="upload__photolbl">Car Photo1</label>
+      <input type="file" #file1 class="upload__file"  placeholder="choose file" (change)="uploadFile(file1.files,'1')">
+      <!-- <button type="button" class="upload__btn" (click)="file.click()">Upload File</button> -->
+    </div>
+    <div class="upload">
+      <label class="upload__photolbl">Car Photo2</label>
+      <input type="file" #file2 class="upload__file"  placeholder="choose file" (change)="uploadFile(file2.files, '2')">
+      <!-- <button type="button" class="upload__btn" (click)="file.click()">Upload File</button> -->
+    </div>
+    <div class="upload">
+      <label class="upload__photolbl" >Car Photo3</label>
+      <input type="file" #file3 class="upload__file"  placeholder="choose file" (change)="uploadFile(file3.files, '3')">
+      <!-- <button type="button" class="upload__btn" (click)="file.click()">Upload File</button> -->
+    </div>
+
+     <div class="flex-container ml-4">
+      <label class="txt-2" ><b>Features</b> </label>
+      <div class="pd-bt-1 txt-1_5 flx-box" *ngFor="let feature of newCarForm.get('features')?.controls; let i=index;">
+        <input [id] ="i" type="checkbox" [formControl]="feature">
+        <label class="ml-1 txt-1_5" [for] ="i">  {{items[i].name}}</label>
+
+      </div>
+    </div>
+
+  </div>
+  <button class="btn-txt btn-red btn-modify">Submit </button>
+
+  </form>
+</div>

@@ -1,0 +1,9 @@
+.executive__members{
+  display :grid;
+  grid-template-rows: 10px 10px;
+  justify-content: center;
+  align-content: center;
+  font-size: 2rem;
+  grid-row-gap :2rem;
+  margin-top :1rem;
+}

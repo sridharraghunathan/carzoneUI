@@ -1,0 +1,11 @@
+<span class= "heading-1">Our Services</span>
+
+<div class="card">
+  <div class="card__service" *ngFor="let service of (services$ | async) as services; let i=index" >
+    <i [ngClass]="service.serviceIcon" class="flaticon-2x"></i>
+    <span>{{service.serviceTagLine}}</span>
+    <span class="number">{{i+1}}</span>
+    <span>{{service.serviceSupport}}</span>
+  </div>
+
+</div>

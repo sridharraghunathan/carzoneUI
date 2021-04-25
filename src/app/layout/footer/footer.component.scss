@@ -1,0 +1,65 @@
+.btn-modify:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+.footer-1 {
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.footer-2 {
+  height: 9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    margin: 0 16px;
+  }
+
+  ul {
+    margin: 0 16px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    li {
+      width: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 3.5rem;
+      box-shadow: 2px 0px 0px 1px rgb(0 0 0 / 30%);
+      border-radius: 2px;
+      margin: 0 0.5rem;
+      padding: 0.5rem;
+      background: darkslateblue;
+    }
+  }
+}
+
+.btn-modify {
+  font-size: 1.6rem;
+  width: 15rem;
+  height: 4rem;
+  color: grey;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.icon-modify {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.copyrights
+{
+  font-size: 1.5rem;
+}

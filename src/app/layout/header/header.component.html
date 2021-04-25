@@ -1,0 +1,66 @@
+<div [ngClass]="{'company' : !sticky, 'hide': sticky}">
+  <div class ="company__info">
+    <span>
+      <i class="fa fa-phone"></i>
+      <span>{{(contacts$ | async)?.phone}}</span>
+    </span>
+    <span>
+      <i class="fa fa-envelope"></i>
+      <span>{{(contacts$ | async)?.web}}</span>
+      </span>
+    <span>
+      <i class="fa fa-clock-o"></i>
+    <span>{{(contacts$ | async)?.timings}}</span>
+    </span>
+  </div>
+  <div *ngIf="(currentUser$ | async) === null " class="user">
+    <a routerLink ="/account/login" class="user__login">
+      <i class="fa fa-sign-in fa-2x"></i>
+      Login</a>
+
+    <a routerLink ="/account/register" class="user__register"> <i class="fa fa-user"></i> Register</a>
+  </div>
+
+  <div *ngIf="(currentUser$ | async) as currentUser"  >
+    <span class="mr-2"> Welcome , {{currentUser.userName}}</span>
+    <a (click)="logout()" class="user__logout">
+      <i class="fa fa-sign-out"></i>
+      LogOut</a>
+  </div>
+
+</div>
+
+<div [ngClass]="{'carzone' : true, 'bg-white' : sticky , 'sticky-changes' : sticky}">
+  <div *ngIf="sticky; then thenTemplateName else elseTemplateName" class="carzone__logo">
+  </div>
+     <ng-template #thenTemplateName>
+      <img src="../../../assets/images/logos/black-logo.png">
+    </ng-template>
+
+    <ng-template #elseTemplateName>
+      <img src="../../../assets/images/logos/logo.png">
+    </ng-template>
+
+  <div class="carzone__nav">
+    <a routerLink="/home" routerLinkActive="active-lnk"  class="carzone__nav-link">Home</a>
+    <a  routerLink="/cars" routerLinkActive="active-lnk" class="carzone__nav-link">Cars</a>
+    <a routerLink="/about" routerLinkActive="active-lnk"  class="carzone__nav-link">About</a>
+    <a routerLink="/services" routerLinkActive="active-lnk"  class="carzone__nav-link">services</a>
+    <a routerLink="/contacts" routerLinkActive="active-lnk"  class="carzone__nav-link">contact</a>
+    <ng-container *ngIf="(currentUser$ | async)">
+      <a routerLink="/createcar" routerLinkActive="active-lnk"  class="carzone__nav-link">Sell Car</a>
+    </ng-container>
+    <a (click)="onSearchClickHeader()"
+     class="carzone__nav-search"><i class="fa fa-search"></i></a>
+  </div>
+</div>
+
+ <div class ="search" *ngIf="enableSearch">
+  <input class ="searchbox" placeholder="type Keyword(s) here Eg : audi , benz etc">
+  <button (click)="onSearchClick()" class ="btn-txt btn-red">Search</button>
+ </div>
+
+ <div class="car_img" *ngIf="enableCarPic">
+
+ </div>
+

@@ -1,0 +1,42 @@
+<div class="search__container">
+  <input [(ngModel)]="carSearch.CarName"
+  class="search_name" type="text" placeholder="Search by name" >
+
+    <select [(ngModel)]="carSearch.Model"  class="dropdown">
+      <option value ="Model">Model</option>
+      <option value="488 GTB">488 GTB</option>
+      <option value="7A88 GTB">7A88 GTB</option>
+      <option value="8766 BA">8766 BA</option>
+      </select>
+
+    <select [(ngModel)]="carSearch.Location"  class="dropdown">
+      <option  >Location</option>
+      <option value="TX, Austin">TX, Austin</option>
+      <option value="TX, Berkeley">TX, Berkeley</option>
+      <option value="TX, Houston">TX, Houston</option>
+    </select>
+
+
+    <select [(ngModel)]="carSearch.YearMake"  class="dropdown">
+      <option >Year</option>
+      <option value="2017">2017</option>
+      <option value="2018">2018</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+    </select>
+
+    <select [(ngModel)]="carSearch.BodyStyle" class="dropdown">
+      <option >Select Type of Car</option>
+      <option value="Sedan">SEDAN</option>
+      <option value="Sport">SPORT</option>
+      <option value="Suv">SUV</option>
+    </select>
+
+    <ngx-slider
+  [(ngModel)]="sliderValue" [(value)]="value" [(highValue)]="highValue" [options]="options"
+ (mouseup)="sliderEvent()">
+</ngx-slider>
+
+    <button (click)="onSearchClick()" class ="btn-txt btn-red btn-modify"><i class="fa fa-search mr-1"></i> Search</button>
+
+</div>

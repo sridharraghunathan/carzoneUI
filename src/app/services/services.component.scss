@@ -1,0 +1,53 @@
+.flaticon-2x{
+  font-size: 4rem;
+  color:red;
+}
+
+.card{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 1rem auto;
+  grid-row-gap: 2rem;
+  grid-column-gap: 2rem;
+  color: rgba(0, 0, 0, 0.8);
+  border: 1px solid white;
+  font-size: 4rem;
+  max-width: 1000px;
+
+
+  .card__service{
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    background-color: white;
+    border-radius :2px;
+    margin-left : 1rem;
+    padding :3rem ;
+    box-shadow: 3px 1px 5px 3px rgba(0,0,0,0.1);
+  }
+}
+
+@media only screen and (max-width : 1040px) {
+  .card{
+    grid-template-columns: repeat(2,auto);
+    max-width: 600px;
+  }
+}
+
+@media only screen and (max-width : 640px) {
+  .card{
+    grid-template-columns: auto;
+    max-width: 600px;
+  }
+}
+
+.number{
+  font-size:15rem;
+  font-weight: bold;
+  color:#f4f1f1;
+  position: absolute;
+  top :-60px;
+  right :1.5rem;
+}

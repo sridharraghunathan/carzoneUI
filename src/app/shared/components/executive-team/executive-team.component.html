@@ -1,0 +1,17 @@
+<div class = "executive__team">
+  <span class= "heading-1">Executive Team</span>
+<div #executiveContent class ="executive__slider">
+  <div class="executive__container" *ngFor="let executiveTeam of executiveTeam$| async">
+      <img class="executive__img" [src]="executiveTeam.photo">
+      <div class="executive__members">
+        <span>{{executiveTeam.firstName}}{{executiveTeam.lastName}}</span>
+        <span>{{executiveTeam.designation}}</span>
+      </div>
+
+  </div>
+</div>
+<div class="slider__btn">
+  <a  class="slider__btn-left" (click)="onscrollExecutiveLeft()"><i class="fa fa-angle-left"></i> </a>
+  <a  class="slider__btn-right" (click)="onscrollExecutiveRight()" ><i class="fa fa-angle-right"> </i></a>
+</div>
+</div>

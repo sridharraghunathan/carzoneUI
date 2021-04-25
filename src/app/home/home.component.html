@@ -1,0 +1,213 @@
+
+  <div class="carousel">
+    <carousel>
+      <slide *ngFor="let carousel of carousel$ | async ">
+        <img  class="car" [src]="carousel.carImage">
+        <div class="carousel-heading">
+        <h1 class="carousel-h1">{{carousel.carCaption}}</h1>
+        <p class="carousel-text">{{carousel.carText}}</p>
+        <a class ="btn-txt btn-red btn-custom"  (click)="onReadMore()"  >Read More</a>
+        </div>
+      </slide>
+    </carousel>
+    <app-search class="search__main"></app-search>
+  </div>
+
+  <div class = "feature-cars">
+    <span class= "heading-1">Featured Cars</span>
+
+    <div #widgetsContent class ="slider">
+      <div class="slider-container" *ngFor="let cardata of carData$ | async">
+
+          <span class="featured-car">Featured</span>
+          <img class="slider__img" [src]="cardata.carPhotos[0].pictureUrl">
+          <div class="featured__items">
+            <label>{{cardata.carName}}</label>
+            <label><i class="fa fa-map-marker"></i> {{cardata.location}}</label>
+            <span>{{cardata.fuelType}}</span>
+            <span>{{cardata.miles}}</span>
+            <span>{{cardata.transmission}}</span>
+            <span>{{cardata.bodyStyle}}</span>
+            <span>{{cardata.color}}</span>
+            <span>{{cardata.yearMake}}</span>
+            <span class="price">{{cardata.price| currency}} </span>
+          </div>
+
+      </div>
+
+      <!-- <div class="slider-container">
+        <span class="featured-car img_feature1">Featured</span>
+        <img class="slider__img img_feature1 " src="/assets/images/car-1.jpg">
+        <div class="featured__items">
+          <label>2017 Ford F-250 Super Duty</label>
+          <label><i class="fa fa-map-marker"></i> <span> TX Austin</span></label>
+          <span>Petrol</span>
+          <span>10,000 Km</span>
+          <span>Automatic</span>
+          <span>Sport</span>
+          <span>White</span>
+          <span>2017</span>
+          <span class="price">{{40000  | currency}} </span>
+        </div>
+      </div>
+      <div class="slider-container">
+        <span class="featured-car img_feature2">Featured</span>
+        <img class="slider__img" src="/assets/images/car-2.jpg">
+         <div class="featured__items">
+          <label>2017 Ford F-250 Super Duty</label>
+          <label><i class="fa fa-map-marker"></i>TX Austin</label>
+          <span>Petrol</span>
+          <span>10,000 Km</span>
+          <span>Automatic</span>
+          <span>Sport</span>
+          <span>White</span>
+          <span>2017</span>
+          <span class="price">{{40000  | currency}} </span>
+        </div>
+      </div >
+      <div class="slider-container">
+        <span class="featured-car img_feature3">Featured</span>
+        <img class="slider__img" src="/assets/images/car-3.jpg">
+        <div class="featured__items">
+          <label>2017 Ford F-250 Super Duty</label>
+          <label><i class="fa fa-map-marker"></i>TX Austin</label>
+          <span>Petrol</span>
+          <span>10,000 Km</span>
+          <span>Automatic</span>
+          <span>Sport</span>
+          <span>White</span>
+          <span>2017</span>
+          <span class="price">{{40000  | currency}} </span>
+        </div>
+      </div>
+      <div class="slider-container">
+        <span class="featured-car img_feature4">Featured</span>
+        <img class="slider__img" src="/assets/images/car-4.jpg">
+        <div class="featured__items">
+          <label>2017 Ford F-250 Super Duty</label>
+          <label><i class="fa fa-map-marker"></i>TX Austin</label>
+          <span>Petrol</span>
+          <span>10,000 Km</span>
+          <span>Automatic</span>
+          <span>Sport</span>
+          <span>White</span>
+          <span>2017</span>
+        </div>
+      </div>
+      <div class="slider-container">
+        <span class="featured-car img_feature5">Featured</span>
+        <img class="slider__img" src="/assets/images/car-5.jpg">
+        <div class="featured__items">
+          <label>2017 Ford F-250 Super Duty</label>
+          <label><i class="fa fa-map-marker"></i>TX Austin</label>
+          <span>Petrol</span>
+          <span>10,000 Km</span>
+          <span>Automatic</span>
+          <span>Sport</span>
+          <span>White</span>
+          <span>2017</span>
+        </div>
+      </div>
+      <div class="slider-container">
+        <span class="featured-car img_feature6">Featured</span>
+        <img class="slider__img" src="/assets/images/car-6.jpg">
+        <div class="featured__items">
+          <label>2017 Ford F-250 Super Duty</label>
+          <label><i class="fa fa-map-marker"></i>TX Austin</label>
+          <span>Petrol</span>
+          <span>10,000 Km</span>
+          <span>Automatic</span>
+          <span>Sport</span>
+          <span>White</span>
+          <span>2017</span>
+
+        </div>
+      </div> -->
+    </div>
+    <div class="slider__btn">
+      <a  class="slider__btn-left" (click)="onscrollLeft()"><i class="fa fa-angle-left"></i> </a>
+      <a  class="slider__btn-right" (click)="onscrollRight()" ><i class="fa fa-angle-right"> </i></a>
+    </div>
+  </div>
+
+  <div class = "latest-cars">
+    <span class= "heading-1">Latest Cars</span>
+    <div class="latest__car-sale">
+
+      <div class="latest__car-content" *ngFor="let carDataSale of carDataSale$ | async">
+        <img class="latest__car-img" [src]="carDataSale.carPhotos[1]?.pictureUrl || carDataSale.carPhotos[0].pictureUrl">
+        <span class="latest__car-miles"> <i class="fa fa-tachometer fa-2x"></i> {{carDataSale.miles}} </span>
+        <span class="latest__car-year"> <i class="fa fa-calendar fa-2x"></i> {{carDataSale.yearMake}}</span>
+        <span class="latest__car-transmission"> <i class="fa fa-cog fa-2x"></i> {{carDataSale.transmission}}</span>
+        <span class="latest__car-carname" >{{carDataSale.carName}}</span>
+        <span class="latest__car-location" ><i class="fa fa-map-marker"></i>
+        <span> {{carDataSale.location}}</span>
+        </span>
+        <hr class="horizontal-line">
+        <span class="latest__car-body" >{{carDataSale.bodyStyle}}</span>
+        <span class="latest__car-price" >{{carDataSale.price | currency}}</span>
+        <span class="latest__car-saletag">For Sale</span>
+      </div>
+
+      <!-- <div class="latest__car-content">
+        <img class="latest__car-img" src="/assets/images/car-1.jpg">
+        <span class="latest__car-miles"> <i class="fa fa-tachometer fa-2x"></i> 22500KM </span>
+        <span class="latest__car-year"> <i class="fa fa-calendar fa-2x"></i> 2017</span>
+        <span class="latest__car-transmission"> <i class="fa fa-cog fa-2x"></i> Automatic</span>
+        <span class="latest__car-carname" >2017 Ford F-250 Super Duty</span>
+        <span class="latest__car-location" ><i class="fa fa-map-marker"></i><span> TX Austin</span></span>
+        <hr class="horizontal-line">
+        <span class="latest__car-body" >Sport</span>
+        <span class="latest__car-price" >$23000</span>
+      </div>
+      <div class="latest__car-content">
+        <img class="latest__car-img" src="/assets/images/car-1.jpg">
+        <span class="latest__car-miles"> <i class="fa fa-tachometer fa-2x"></i> 22500KM </span>
+        <span class="latest__car-year"> <i class="fa fa-calendar fa-2x"></i> 2017</span>
+        <span class="latest__car-transmission">
+          <i class="fa fa-cog fa-2x"></i> Automatic</span>
+        <span class="latest__car-carname" >2017 Ford F-250 Super Duty</span>
+        <span class="latest__car-location" ><i class="fa fa-map-marker"></i><span> TX Austin</span></span>
+        <hr class="horizontal-line">
+        <span class="latest__car-body" >Sport</span>
+        <span class="latest__car-price" >$23000</span>
+      </div>
+      <div class="latest__car-content">
+        <img class="latest__car-img" src="/assets/images/car-1.jpg">
+        <span class="latest__car-miles"> <i class="fa fa-tachometer fa-2x"></i> 22500KM </span>
+        <span class="latest__car-year"> <i class="fa fa-calendar fa-2x"></i> 2017</span>
+        <span class="latest__car-transmission"> <i class="fa fa-cog fa-2x"></i> Automatic</span>
+        <span class="latest__car-carname" >2017 Ford F-250 Super Duty</span>
+        <span class="latest__car-location" ><i class="fa fa-map-marker"></i><span> TX Austin</span></span>
+        <hr class="horizontal-line">
+        <span class="latest__car-body" >Sport</span>
+        <span class="latest__car-price" >$23000</span>
+      </div>
+      <div class="latest__car-content">
+        <img class="latest__car-img" src="/assets/images/car-1.jpg">
+        <span class="latest__car-miles"> <i class="fa fa-tachometer fa-2x"></i> 22500KM </span>
+        <span class="latest__car-year"> <i class="fa fa-calendar fa-2x"></i> 2017</span>
+        <span class="latest__car-transmission"> <i class="fa fa-cog fa-2x"></i> Automatic</span>
+        <span class="latest__car-carname" >2017 Ford F-250 Super Duty</span>
+        <span class="latest__car-location" ><i class="fa fa-map-marker"></i><span> TX Austin</span></span>
+        <hr class="horizontal-line">
+        <span class="latest__car-body" >Sport</span>
+        <span class="latest__car-price" >$23000</span>
+      </div>
+      <div class="latest__car-content">
+        <img class="latest__car-img" src="/assets/images/car-1.jpg">
+        <span class="latest__car-miles"> <i class="fa fa-tachometer fa-2x"></i> 22500KM </span>
+        <span class="latest__car-year"> <i class="fa fa-calendar fa-2x"></i> 2017</span>
+        <span class="latest__car-transmission"> <i class="fa fa-cog fa-2x"></i> Automatic</span>
+        <span class="latest__car-carname" >2017 Ford F-250 Super Duty</span>
+        <span class="latest__car-location" ><i class="fa fa-map-marker"></i><span> TX Austin</span></span>
+          <hr class="horizontal-line">
+        <span class="latest__car-body" >Sport</span>
+        <span class="latest__car-price" >$23000</span>
+      </div> -->
+    </div>
+
+
+  </div>
+
+  <app-executive-team></app-executive-team>

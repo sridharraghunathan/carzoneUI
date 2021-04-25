@@ -1,0 +1,47 @@
+<form [formGroup]="contactForm">
+  <span class="heading-1">Contact Us</span>
+<div class="contact">
+  <div class="contact__request">
+    <app-text-input  formControlName="fullName" [label]="'Full Name'"  ></app-text-input>
+    <app-text-input  formControlName="email" [label]="'Email'"  ></app-text-input>
+    <app-text-input  formControlName="subject" [label]="'Subject'"></app-text-input>
+    <app-text-input  formControlName="contactNumber" [label]="'Contact Number'"></app-text-input>
+    <!-- <input type="text" formControlName="fullName" placeholder="Full Name" /> -->
+    <!-- <input type="text" formControlName="email" placeholder="Email" />
+    <input type="text" formControlName="subject" placeholder="Subject" />
+    <input type="text" formControlName="contactNumber" placeholder="Contact Number" /> -->
+    <textarea class ="contact__message"  formControlName="comments" placeholder="Write message"></textarea>
+    <a class ="btn-txt btn-red btn-custom"  (click)="onSubmit()"  >SEND MESSAGE</a>
+  </div>
+
+<div *ngIf="(contacts$ | async) as contactsinfo">
+  <div class="contact__info">
+    <i class="flaticon-phone"></i>
+    <div class="contact__detail">
+      <span>Phone</span>
+      <span>{{ contactsinfo.phone}}</span>
+    </div>
+
+    <i class="flaticon-mail"></i>
+    <div class="contact__detail">
+      <span>Email</span>
+      <span>{{ contactsinfo.email}}</span>
+    </div>
+
+    <i class="flaticon-earth"></i>
+    <div class="contact__detail">
+      <span>Web</span>
+      <span>{{ contactsinfo.web}}</span>
+    </div>
+    <i class="flaticon-fax"></i>
+    <div class="contact__detail">
+      <span>Fax</span>
+      <span>{{ contactsinfo.fax}}</span>
+    </div>
+
+  </div>
+</div>
+</div>
+
+
+</form>

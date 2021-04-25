@@ -10,18 +10,42 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+ 
+ng g m services
+create router file
+ng g s services 
+ng g c services --skip-tests --flat=true
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+THINGS TO START WORKING 
+SEARCH DATA GET FROM HOME SCREEN 
+HOME SCREEN NAVIGATE TO CARS SCREEN 
+LOADING SPINNER FOR ALL THE SCREEN NAVIGATION.
+Built the CARS SCREEN AND PARTICULAR PAGE NAV
+SEND MESSAGE SCREEN
+ADD NEW CARS AND UPLOADING THE IMAGE FOR THE CAR.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Auto Poulate the data for SEND MESSAGE SCREEN IF LOGGED IN 
+If Enquiry made for an car then throw error if already done.
+dashboard to show the list enquiry made by the user.
+Normal Car dealer contact will show the thanks for contacting we will get back to you shortly
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+create the new screen with search functionality 
+Filter
+Add New Car
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+carName 
+Price
+Description - Rich text editor
+Year drop down
+Condition drop down
+Feature multiselect checkbox
+Change Password 
+
+Sam@gmail.com 
+$Sam123
+
+
+

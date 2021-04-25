@@ -1,0 +1,18 @@
+<div class="footer">
+  <div *ngIf="enableGetInTouch" class="footer-1 bg-red">
+    <span class="txt-2 txt-white">Do You have Questions ?</span>
+    <button (click)="onContact()"  class ="btn-white mt-0 btn-modify">Get in Touch</button>
+  </div>
+  <div class="footer-2 bg-blue txt-white">
+    <span class="copyrights">
+      © {{year}}  {{copyrightText}}
+    </span>
+    <ul>
+      <li><a href="https://facebook.com/" target="_blank" class="facebook-bg"><i class="fa fa-facebook icon-modify"></i></a></li>
+      <li><a href="https://twitter.com/" target="_blank" class="twitter-bg"><i class="fa fa-twitter icon-modify"></i></a></li>
+      <li><a href="https://google.com/" target="_blank" class="google-bg"><i class="fa fa-google-plus icon-modify"></i></a></li>
+      <li><a href="https://linkedin.com/ " target="_blank" class="linkedin-bg"><i class="fa fa-linkedin icon-modify"></i></a></li>
+  </ul>
+  </div>
+
+</div>
