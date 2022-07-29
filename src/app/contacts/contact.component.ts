@@ -3,7 +3,7 @@ import { AppService } from './../app.service';
 import { ICompanyWebsiteInfo } from './../shared/models/ICar';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ContactComponent implements OnInit {
   contacts$: Observable<ICompanyWebsiteInfo> | undefined;
-  contactForm: FormGroup;
+  contactForm: UntypedFormGroup;
   constructor(
     private appService: AppService,
     private contactService: ContactService,
@@ -32,15 +32,15 @@ export class ContactComponent implements OnInit {
   }
 
   intiializeContactControl(): void {
-    this.contactForm = new FormGroup({
-      fullName: new FormControl('', Validators.required),
-      email: new FormControl('', [
+    this.contactForm = new UntypedFormGroup({
+      fullName: new UntypedFormControl('', Validators.required),
+      email: new UntypedFormControl('', [
         Validators.required,
         Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'),
       ]),
-      subject: new FormControl('', Validators.required),
-      contactNumber: new FormControl('', Validators.required),
-      comments: new FormControl(''),
+      subject: new UntypedFormControl('', Validators.required),
+      contactNumber: new UntypedFormControl('', Validators.required),
+      comments: new UntypedFormControl(''),
     });
   }
 

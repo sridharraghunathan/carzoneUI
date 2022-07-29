@@ -3,11 +3,11 @@ import { NewcarService } from './newcar.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpEventType } from '@angular/common/http';
 import {
-  FormBuilder,
+  UntypedFormBuilder,
   Validators,
-  FormGroup,
-  FormControl,
-  FormArray,
+  UntypedFormGroup,
+  UntypedFormControl,
+  UntypedFormArray,
 } from '@angular/forms';
 import { Editor, Toolbar } from 'ngx-editor';
 import { ToastrService } from 'ngx-toastr';
@@ -27,7 +27,7 @@ export class NewcarComponent implements OnInit, OnDestroy {
     condition: '',
   };
   files: File[] = [];
-  newCarForm: FormGroup;
+  newCarForm: UntypedFormGroup;
   editor: Editor;
   saleType: any = ['Used', 'Sale'];
   fuelType: any = ['Petrol', 'Diesel', 'Gasoline'];
@@ -97,7 +97,7 @@ export class NewcarComponent implements OnInit, OnDestroy {
 
   constructor(
     private newcarService: NewcarService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private toastr: ToastrService
   ) {}
 
@@ -160,9 +160,9 @@ export class NewcarComponent implements OnInit, OnDestroy {
   }
   featuresAdd(items: any): any {
     const arr = items.map((item: string) => {
-      return new FormControl(false);
+      return new UntypedFormControl(false);
     });
-    return new FormArray(arr);
+    return new UntypedFormArray(arr);
   }
 
   onSubmit(): void {
