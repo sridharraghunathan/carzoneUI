@@ -16,10 +16,12 @@ import { CoreModule } from './core/core.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    //HttpClientModule,
     HttpClientModule,
     HomeModule,
     CoreModule,
     BrowserAnimationsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

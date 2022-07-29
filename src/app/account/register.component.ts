@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.returnUrl =
-    this.activatedRoute.snapshot.queryParams.returnUrl || '/home';
+      this.activatedRoute.snapshot.queryParams.returnUrl || '/home';
     this.createRegisterForm();
   }
 
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'),
         ],
-         // [this.emailExistCheck()]
+        // [this.emailExistCheck()]
       ],
       password: [null, Validators.required],
     });
@@ -56,16 +56,19 @@ export class RegisterComponent implements OnInit {
     // tslint:disable-next-line: deprecation
     this.accountService.register(this.registerForm.value).subscribe(
       (Response) => {
+        console.log(Response);
         this.router.navigateByUrl(this.returnUrl);
       },
       (error) => {
         console.log(error);
-        if (error.error?.errors ){
+        if (error.error?.errors) {
           this.toastr.error(error.error.errors);
         } else if (error.error?.message) {
           this.toastr.error(error.error.message, 'display Name already exists');
         } else {
-          this.toastr.error('Unknown Error Occured, Please verify input fields values are mentioned correctly');
+          this.toastr.error(
+            'Unknown Error Occured, Please verify input fields values are mentioned correctly'
+          );
         }
       }
     );
@@ -92,6 +95,3 @@ export class RegisterComponent implements OnInit {
   }
 */
 }
-
-
-
