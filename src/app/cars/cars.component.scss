@@ -1,7 +1,7 @@
-$total-width : 1000px;
+$total-width: 1000px;
 
-.feature-car{
-  display: flex;
+.feature-car {
+  // display: flex;
   flex-wrap: wrap;
 }
 
@@ -57,17 +57,17 @@ $total-width : 1000px;
   font-size: 1.2rem;
   text-align: center;
   vertical-align: middle;
+  height: 1rem;
 }
 
 .cars_pagination {
   grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(26rem,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
   display: grid;
   max-width: 1300px;
   background-color: #e9e8e8;
   box-shadow: 2px 2px 8px rgb(0 0 0 / 20%);
 }
-
 
 .car__container {
   display: inline-block;
@@ -77,18 +77,14 @@ $total-width : 1000px;
   background-color: white;
 }
 
-.feature-cars{
-  margin-bottom: 1rem;
-}
-
 .cars__img {
   height: 20rem;
   width: 100%;
 }
 
-.upload__btn{
+.upload__btn {
   display: inline-block;
   background-color: green;
-  color :white;
+  color: white;
   font-family: inherit;
 }
