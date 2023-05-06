@@ -5,13 +5,11 @@
   bottom: 10rem;
   border-radius: 6px;
   box-shadow: none;
+  cursor: pointer;
+  border: none;
 }
 
 .btn-hide {
   display: none;
   transition: all 0.3s ease-in-out;
 }
-
-
-
-

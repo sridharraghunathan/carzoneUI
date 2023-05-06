@@ -7,7 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { timer } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { AccountService } from './account.service';
 
@@ -17,9 +17,9 @@ import { AccountService } from './account.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  registerForm: UntypedFormGroup;
-  errors: string[];
-  returnUrl: string;
+  registerForm!: UntypedFormGroup;
+  errors!: string[];
+  returnUrl!: string;
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'),
         ],
-        // [this.emailExistCheck()]
+        [this.emailExistCheck()]
       ],
       password: [null, Validators.required],
     });
@@ -74,24 +74,22 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  /*
-
   emailExistCheck(): AsyncValidatorFn {
-    return control => {
+    return (control) => {
       return timer(500).pipe(
-        switchMap( (val : any) => {
-          if (!control.value){
-              return null;
+        switchMap((_) => {
+          if (!control.value) {
+            return null!;
           }
           //call the service to check email exist or not
-          return  this.accountService.emailExistCheck(control.value).pipe(
-            map ((res : any) => {
-              return res ? {emailExists: true} : null;
+          return this.accountService.emailExistCheck(control.value).pipe(
+            map((res: any) => {
+              console.log(res);
+              return res ? { emailExists: true } : null;
             })
           );
         })
       );
     };
   }
-*/
 }

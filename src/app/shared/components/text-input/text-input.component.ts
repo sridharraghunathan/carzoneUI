@@ -1,4 +1,3 @@
-import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit, ViewChild, ElementRef, Input, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
@@ -12,9 +11,9 @@ export class TextInputComponent implements OnInit, ControlValueAccessor {
   input!: ElementRef;
   id: string | undefined;
   @Input() type = 'text';
-  @Input() label: string  ;
-  @Input() requiredMsg: string;
-  @Input() patternMsg: string ;
+  @Input() label!: string  ;
+  @Input() requiredMsg!: string;
+  @Input() patternMsg!: string ;
 
   constructor(@Self() public controlDir: NgControl) {
     this.controlDir.valueAccessor = this;

@@ -24,11 +24,11 @@ export class ExecutiveTeamComponent implements OnInit {
 
   onscrollExecutiveLeft(): void{
     this.executiveContent.nativeElement.scrollTo({left :
-    (this.executiveContent.nativeElement.scrollLeft - 293), behaviour: 'smooth'});
+    (this.executiveContent.nativeElement.scrollLeft - 290), behaviour: 'smooth'});
   }
 
   onscrollExecutiveRight(): void{
     this.executiveContent.nativeElement.scrollTo({left :
-       (this.executiveContent.nativeElement.scrollLeft + 293), behaviour : 'smooth' });
+       (this.executiveContent.nativeElement.scrollLeft + 290), behaviour : 'smooth' });
   }
 }

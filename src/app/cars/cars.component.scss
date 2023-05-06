@@ -49,6 +49,7 @@ $total-width : 1000px;
 
 .featured__items span {
   border: 1px solid lightgray;
+  background-image: linear-gradient(6deg, #e0d9da, transparent);
   display: table;
   padding: 5px 14px;
   border-radius: 3px;
@@ -62,7 +63,7 @@ $total-width : 1000px;
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(26rem,1fr));
   display: grid;
-  max-width: 800px;
+  max-width: 1300px;
   background-color: #e9e8e8;
   box-shadow: 2px 2px 8px rgb(0 0 0 / 20%);
 }

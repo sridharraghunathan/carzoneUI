@@ -27,8 +27,8 @@ export class NewcarComponent implements OnInit, OnDestroy {
     condition: '',
   };
   files: File[] = [];
-  newCarForm: UntypedFormGroup;
-  editor: Editor;
+  newCarForm!: UntypedFormGroup;
+  editor!: Editor;
   saleType: any = ['Used', 'Sale'];
   fuelType: any = ['Petrol', 'Diesel', 'Gasoline'];
   transmission: any = ['Manual', 'Transmission'];
